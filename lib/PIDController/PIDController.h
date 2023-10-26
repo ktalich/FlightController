@@ -1,35 +1,46 @@
+#include <GlobalConstants.h>
+
 class PIDController
 {
 private:
-    float _kp;
-    float _ki;
-    float _kd;
-    float _lastError;
-    float _integral;
+    float _kp = 0;
+    float _ki = 0;
+    float _kd = 0;
+    float _lastError = 0;
+    float _integral = 0;
+
 public:
-    PIDController(float kp, float ki, float kd);
-    float Update(float target, float current, float dt);
+    PIDController() { }
+
+    void setPID(float kp, float ki, float kd)
+    {
+        setKp(kp);
+        setKi(ki);
+        setKd(kd);
+    }
+
+    void setKp(float kp)
+    {
+        _kp = kp;
+    }
+    void setKi(float ki)
+    {
+        _ki = ki * REFRESH_RATE_S;
+        _integral = 0;
+    }
+    void setKd(float kd)
+    {
+        _kd = kd / REFRESH_RATE_S;
+        _lastError = 0;
+    }
+
+    float Update(float target, float current)
+    {
+        float error = target - current;
+        float derivative = error - _lastError;
+        _integral += _ki * error;
+        _lastError = error;
+
+        return _kp * error + _integral + _kd * derivative;
+    }
 };
-
-PIDController::PIDController(float kp, float ki, float kd)
-{
-    _kp = kp;
-    _ki = ki;
-    _kd = kd;
-
-    _lastError = 0;
-    _integral = 0;
-}
-
-float PIDController::Update(float target, float current, float dt)
-{
-    float error = target - current;
-    float derivative = (error - _lastError) / dt;
-    _integral += error * dt;
-
-    float output = _kp * error + _ki * _integral + _kd * derivative;
-
-    _lastError = error;
-
-    return output;
-}
