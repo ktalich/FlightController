@@ -127,52 +127,10 @@ public:
         _motorFL.setSpeed(motorLSpeed);
         _motorFR.setSpeed(motorRSpeed);
 
-
-
-
-        //float pitchOutput = 0.0;
-        // float rollOutput = clampf(_rollPID.Update(desiredRollRate, GyroX), -100.0, 100.0);
-        //float yawOutput = 0.0;
-
-        // float throttleSignal = Throttle;
-        // float rollSignal = rollOutput / 100.0;
-
         // if(throttleSignal + rollSignal > 1.0)
         //     throttleSignal -= throttleSignal + rollSignal - 1.0;
 
-        // float motorRLSpeed = clampf(throttleSignal + rollSignal, IdleMotorSpeed, MaxMotorSpeed);
-        // float motorRRSpeed = clampf(throttleSignal - rollSignal, IdleMotorSpeed, MaxMotorSpeed);
-
-        //_motorFL.setSpeed(clampf(throttleSignal + rollSignal, IdleMotorSpeed, MaxMotorSpeed));
-        //_motorFR.setSpeed(clampf(throttleSignal - rollSignal, IdleMotorSpeed, MaxMotorSpeed));
-        // _motorRL.setSpeed(motorRLSpeed);
-        // _motorRR.setSpeed(motorRRSpeed);
-
         //printInfo(motorLSpeed, motorRSpeed);
-
-
-        // float pitchTarget = 0.0 * MAX_PITCH_ROLL_ANGLE;
-        // float rollTarget = 0.0 * MAX_PITCH_ROLL_ANGLE;
-        // float yawTarget = 0.0 * MAX_YAW_RATE;
-
-        // float pitchOutput = _pitchPID.Update(pitchTarget, Pitch);
-        // float rollOutput = _rollPID.Update(rollTarget, Roll);
-        // // float yawOutput = yawPID.Update(yawTarget, Yaw);
-        // float yawOutput = 0.0;
-
-        // float pitchSignal = mapf(pitchOutput, -MAX_ANGLE, MAX_ANGLE, -1.0, 1.0);
-        // float rollSignal = mapf(rollOutput, -MAX_ANGLE, MAX_ANGLE, -1.0, 1.0);
-        // float yawSignal = mapf(yawOutput, -MAX_YAW_RATE, MAX_YAW_RATE, -1.0, 1.0);
-
-        // float motorFLSpeed = clampf(0.0 + yawSignal + pitchSignal + rollSignal, IDLE_MOTOR_SPEED, MAX_MOTOR_SPEED);
-        // float motorFRSpeed = clampf(0.0 - yawSignal + pitchSignal - rollSignal, IDLE_MOTOR_SPEED, MAX_MOTOR_SPEED);
-        // float motorRLSpeed = clampf(0.0 - yawSignal - pitchSignal + rollSignal, IDLE_MOTOR_SPEED, MAX_MOTOR_SPEED);
-        // float motorRRSpeed = clampf(0.0 + yawSignal - pitchSignal - rollSignal, IDLE_MOTOR_SPEED, MAX_MOTOR_SPEED);
-
-        // _motorFL.setSpeed(motorFLSpeed);
-        // _motorFR.setSpeed(motorFRSpeed);
-        // _motorRL.setSpeed(motorRLSpeed);
-        // _motorRR.setSpeed(motorRRSpeed);
     }
 
     void setMinMotorSpeed(float minMotorSpeed)

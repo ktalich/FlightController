@@ -42,9 +42,9 @@ public:
     {
         float error = target - current;
         float derivative = error - _lastError;
-        _integral += _ki * error;
+        _integral += error;
         _lastError = error;
 
-        return _kp * error + _integral + _kd * derivative;
+        return _kp * error + _ki *_integral + _kd * derivative;
     }
 };
