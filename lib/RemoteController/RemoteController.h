@@ -7,14 +7,17 @@
 #define SET_MAX_MOTOR_SPEED 0x2
 #define SET_IDLE_MOTOR_SPEED 0x3
 #define SET_MAX_ANGLE 0x4
-#define SET_PID_KP 0x5
-#define SET_PID_KI 0x6
-#define SET_PID_KD 0x7
-#define SET_THROTTLE 0x8
-#define UPDATED_EULER_ANGLES 0x9
-#define SET_PITCH_INPUT 0xA
-#define SET_ROLL_INPUT 0xB
-#define SET_YAW_INPUT 0xC
+#define SET_RATE_PID_KP 0x5
+#define SET_RATE_PID_KI 0x6
+#define SET_RATE_PID_KD 0x7
+#define SET_ANGLE_PID_KP 0x8
+#define SET_ANGLE_PID_KI 0x9
+#define SET_ANGLE_PID_KD 0x10
+#define SET_THROTTLE 0x11
+#define SET_PITCH_INPUT 0x12
+#define SET_ROLL_INPUT 0x13
+#define SET_YAW_INPUT 0x14
+#define UPDATED_EULER_ANGLES 0x15
 
 class RemoteController
 {
@@ -97,14 +100,23 @@ private:
         case SET_MAX_ANGLE:
             _flightController.setMaxAngle(value);
             break;
-        case SET_PID_KP:
-            _flightController.setPID_KP(value);
+        case SET_RATE_PID_KP:
+            _flightController.setRatePID_KP(value);
             break;
-        case SET_PID_KI:
-            _flightController.setPID_KI(value);
+        case SET_RATE_PID_KI:
+            _flightController.setRatePID_KI(value);
             break;
-        case SET_PID_KD:
-            _flightController.setPID_KD(value);
+        case SET_RATE_PID_KD:
+            _flightController.setRatePID_KD(value);
+            break;
+        case SET_ANGLE_PID_KP:
+            _flightController.setAnglePID_KP(value);
+            break;
+        case SET_ANGLE_PID_KI:
+            _flightController.setAnglePID_KI(value);
+            break;
+        case SET_ANGLE_PID_KD:
+            _flightController.setAnglePID_KD(value);
             break;
         case SET_THROTTLE:
             _flightController.setThrottle(value);

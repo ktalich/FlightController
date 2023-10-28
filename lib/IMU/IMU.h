@@ -48,13 +48,13 @@ public:
 
         MPU9250Setting setting;
         setting.accel_fs_sel = ACCEL_FS_SEL::A16G;
-        setting.gyro_fs_sel = GYRO_FS_SEL::G2000DPS;
+        setting.gyro_fs_sel = GYRO_FS_SEL::G1000DPS;
         setting.mag_output_bits = MAG_OUTPUT_BITS::M16BITS;
-        setting.fifo_sample_rate = FIFO_SAMPLE_RATE::SMPL_200HZ;
+        setting.fifo_sample_rate = FIFO_SAMPLE_RATE::SMPL_250HZ;
         setting.gyro_fchoice = 0x03;
-        setting.gyro_dlpf_cfg = GYRO_DLPF_CFG::DLPF_92HZ;//DLPF_45HZ
+        setting.gyro_dlpf_cfg = GYRO_DLPF_CFG::DLPF_20HZ;//DLPF_45HZ
         setting.accel_fchoice = 0x01;
-        setting.accel_dlpf_cfg = ACCEL_DLPF_CFG::DLPF_99HZ;//DLPF_45HZ
+        setting.accel_dlpf_cfg = ACCEL_DLPF_CFG::DLPF_45HZ;//DLPF_45HZ
         mpu.setup(MPU9250_IMU_ADDRESS, setting);
         delay(5000);
 

@@ -11,6 +11,10 @@ private:
 
 public:
     PIDController() { }
+    PIDController(float kp, float ki, float kd)
+    {
+        setPID(kp, ki, kd);
+    }
 
     void setPID(float kp, float ki, float kd)
     {
