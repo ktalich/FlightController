@@ -3,7 +3,7 @@
 #include <FlightController.h>
 #include <GlobalConstants.h>
 
-#define SET_MIN_MOTOR_SPEED 0x1
+#define CONNECTED 0x0
 #define SET_MAX_MOTOR_SPEED 0x2
 #define SET_IDLE_MOTOR_SPEED 0x3
 #define SET_MAX_ANGLE 0x4
@@ -18,6 +18,15 @@
 #define SET_ROLL_INPUT 0x13
 #define SET_YAW_INPUT 0x14
 #define UPDATED_EULER_ANGLES 0x15
+#define SET_YAW_RATE_PID_KP 0x16
+#define SET_YAW_RATE_PID_KI 0x17
+#define SET_YAW_RATE_PID_KD 0x18
+#define SET_ACC_RATE_PID_KP 0x19
+#define SET_ACC_RATE_PID_KI 0x20
+#define SET_ACC_RATE_PID_KD 0x21
+#define SET_HEIGHT_RATE_PID_KP 0x22
+#define SET_HEIGHT_RATE_PID_KI 0x23
+#define SET_HEIGHT_RATE_PID_KD 0x24
 
 class RemoteController
 {
@@ -60,13 +69,13 @@ public:
         int packetSize = _udp.parsePacket();
         if (packetSize)
         {
-            Serial.print("Received packet of size ");
-            Serial.println(packetSize);
-            Serial.print("From ");
-            IPAddress remoteIp = _udp.remoteIP();
-            Serial.print(remoteIp);
-            Serial.print(", port ");
-            Serial.println(_udp.remotePort());
+            // Serial.print("Received packet of size ");
+            // Serial.println(packetSize);
+            // Serial.print("From ");
+            // IPAddress remoteIp = _udp.remoteIP();
+            // Serial.print(remoteIp);
+            // Serial.print(", port ");
+            // Serial.println(_udp.remotePort());
 
             int len = _udp.read(_receiveBuffer, BUFFER_SIZE);
             if (len > 0)
@@ -88,9 +97,6 @@ private:
 
         switch (command)
         {
-        case SET_MIN_MOTOR_SPEED:
-            _flightController.setMinMotorSpeed(value);
-            break;
         case SET_MAX_MOTOR_SPEED:
             _flightController.setMaxMotorSpeed(value);
             break;
@@ -117,6 +123,33 @@ private:
             break;
         case SET_ANGLE_PID_KD:
             _flightController.setAnglePID_KD(value);
+            break;
+        case SET_YAW_RATE_PID_KP:
+            _flightController.setYawRatePID_KP(value);
+            break;
+        case SET_YAW_RATE_PID_KI:
+            _flightController.setYawRatePID_KI(value);
+            break;
+        case SET_YAW_RATE_PID_KD:
+            _flightController.setYawRatePID_KD(value);
+            break;
+        case SET_ACC_RATE_PID_KP:
+            _flightController.setAccRatePID_KP(value);
+            break;
+        case SET_ACC_RATE_PID_KI:
+            _flightController.setAccRatePID_KI(value);
+            break;
+        case SET_ACC_RATE_PID_KD:
+            _flightController.setAccRatePID_KD(value);
+            break;
+        case SET_HEIGHT_RATE_PID_KP:
+            _flightController.setHeightRatePID_KP(value);
+            break;
+        case SET_HEIGHT_RATE_PID_KI:
+            _flightController.setHeightRatePID_KI(value);
+            break;
+        case SET_HEIGHT_RATE_PID_KD:
+            _flightController.setHeightRatePID_KD(value);
             break;
         case SET_THROTTLE:
             _flightController.setThrottle(value);

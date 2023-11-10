@@ -33,6 +33,7 @@ class IMU
 public:
     volatile float Pitch, Roll, Yaw;
     volatile float GyroX, GyroY, GyroZ;
+    volatile float AccX, AccY, AccZ;
 
     IMU()
     {
@@ -214,6 +215,10 @@ public:
             GyroX = mpu.getGyroX();
             GyroY = mpu.getGyroY();
             GyroZ = mpu.getGyroZ();
+
+            AccX = mpu.getAccX();
+            AccY = mpu.getAccY();
+            AccZ = mpu.getAccZ();
         }
 
         // if (mpu.update()) {
